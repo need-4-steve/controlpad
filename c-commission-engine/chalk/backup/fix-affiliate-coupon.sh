@@ -1,0 +1,1 @@
+psql -d chalkcouture -f fix-affiliate-coupon.sql

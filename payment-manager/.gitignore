@@ -1,0 +1,25 @@
+/bin/
+/build/
+logs/
+/classes/
+
+# IDEA
+*.ipr
+*.iml
+*.iws
+.idea/
+
+#Gradle
+.gradle/
+
+# Mac
+*.DS_Store
+
+*~
+out/
+
+# Must ignore sql-config.json as to not overwrite it when updating server
+sql-config.json
+server-config.json
+S3CredentialsProfile.txt
+cp_gateway.json

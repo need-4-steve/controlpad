@@ -1,0 +1,3 @@
+#!/bin/bash
+g++ -o socket-inventory main.cpp ezserver.cpp db.cpp $(mysql_config --libs)
+

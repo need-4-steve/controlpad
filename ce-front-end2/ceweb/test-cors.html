@@ -1,0 +1,55 @@
+ 
+TEST Cors Javascript<br>
+
+<div id='test'></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script> 
+
+//orgid = "3dijckqarphlmnsecx4thkuya";
+//orgid = "4p323fllsy08xlqrfqicjxs0a";
+//orgid = "eyvbklrv4epdji6t21o0xshgg";
+orgid = "asdfasdfqwerqwer123412346";
+
+authorization = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDM2NDQ4OTAsImlhdCI6MTU0MjYzNzY5MCwiaXNzIjoiYXBpLmNvbnRyb2xwYWQuY29tIiwiYXVkIjoiYXBpLmNvbnRyb2xwYWQuY29tIiwic3ViIjoxMDYsIm5hbWUiOiJBZGFoIiwiZnVsbE5hbWUiOiJBZGFoIFJlaWNoZWwiLCJyZXBTdWJkb21haW4iOiJyZXAiLCJyb2xlIjoiUmVwIiwic2VsbGVyVHlwZSI6IlJlc2VsbGVyIiwicGVybSI6eyJjb3JlOmJ1eSI6MSwiY29yZTpzZWxsIjoxfSwiYWNjZXB0ZWRUZXJtcyI6dHJ1ZSwiYWN0aXZlU3Vic2NyaXB0aW9uIjp0cnVlLCJvcmdJZCI6ImFzZGZhc2RmcXdlcnF3ZXIxMjM0MTIzNDYiLCJ0ZW5hbnRfaWQiOiIyIiwiYWN0dWFsVXNlcklkIjoxMDl9.w6uAYlj_F-Ga8ZwBc-stbFG6i4sRGlyIORGjnt1qC0U";
+
+systemid = "1";
+command = "mydownlinelvlone"; //"mydownlinelvlone"; // mydownlinelvlone
+userid = "223";
+sort = "orderdir=asc&offset=0&limit=10&orderby=id";
+
+//var headerVals = { orgid : orgid, authorization : authorization }
+//var postVals = { systemid: systemid, command : command, userid : userid, sort : sort }
+
+var headerVals = { orgid : orgid, authorization : authorization, systemid: systemid, command : command, userid : userid, sort : sort }
+var postVals = {};
+
+console.log("BEFORE");
+
+$.ajax(
+	{ 
+		url: "http://192.168.0.22/ceweb/api-affiliate.php",
+	    //url: "http://comm.dev/ceweb/api-affiliate.php",
+	    //url: "https://ceapidev.controlpad.com/ceweb/api-affiliate.php",
+	    headers: headerVals,
+	    type: "post",
+	    data: postVals,
+	    dataType: "json",
+	}).done(function(result){
+	  	console.log("Done");
+	  	console.log(result);
+
+	  	alert("Done");
+
+	  	document.write(result.count);
+	  	//document.write("TEST");
+	}).error(function(result){
+	  	console.log("Error");
+	  	console.log(result);
+
+	  	alert(JSON.stringify(result, null, 4));
+});
+
+console.log("END");
+
+</script>

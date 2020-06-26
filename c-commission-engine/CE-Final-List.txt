@@ -1,0 +1,47 @@
+CE Back End
+-----------------------------------------------
+Adam - Receipts track wholesale vs retail
+Adam - Flag receipt as to use wholesale value or retail value for commissions
+Adam - Allow multiple ways to calculate. flag with numeric so we can define
+Carl - Allow people to change labels and descriptions in ref to flag number
+
+United - Finish fixing checkpoint - 2 days
+United - Fix pretend and checkpoint - 4 hours
+
+United - Finish Tests - 2 weeks
+United - Conversion from into to long long - 2 days
+
+Adjust to allow specific user commission returned on pretend - 4 hours
+Add extra fields (firstname, lastname, etc...) to ce_users for user login - 4 hours
+Adjust pools to handle proportinal vs evenly divide - 1 day - pool_type added in migrations
+	
+Clean up API keys - 1 day
+Allow DELETE before first actual commission run - 2 days
+Use disable as archive view - 2 days
+
+Command line tools to migrate customer to own database - 2 days
+Spawn thread on each API connection - 1 week 
+IP filtering - 2 days
+ 
+Set limits - Help prevent hacking - 1 day
+	MAX SystemUsers // This is for us to prevent shared server getting out of control
+	This alerts us???
+
+DB connection pool - speedup down to seconds - 1 week
+
+CE Front End
+-------------------------
+Fix all field types (date selection, etc...) - Need help from another developer - 2 days
+Login/Logout needs to be implemented - 4 hours
+Forgot password email needs to be implemented - what email gateway are we using?
+Facebook (oauth) login for ce_users - ???
+Simple wizard to walk customer through system. Such as first system creation - 2 days
+Multi-tier handle pools and pool rules - 4 hours
+
+Pools handle new pool_type - proportional vs divide evenly
+
+End user tools we're not aware of yet
+
+Future Features
+-------------------
+Reports we're not aware of yet

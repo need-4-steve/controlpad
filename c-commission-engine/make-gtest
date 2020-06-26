@@ -1,0 +1,2 @@
+g++ --coverage -fprofile-arcs -ftest-coverage *.cpp -O2 -o ceapi $(mysql_config --libs) -I/usr/include/postgresql/ -L/usr/lib/postgresql/8.3/lib/ -lpq -lcrypto++ -lcrypto -lssl -lcurl -ljsoncpp -lgtest -lpthread
+

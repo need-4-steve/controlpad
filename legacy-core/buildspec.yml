@@ -1,0 +1,43 @@
+version: 0.2
+
+env:
+  parameter-store:
+    GITHUB_ACCESS_TOKEN: "COMPOSER_INSTALL_ACCESS_TOKEN"
+            
+phases:
+  install:
+    commands:
+      - npm i
+      - npm --prefix ./spadev i ./spadev
+      - cp .env.testing .env
+      - composer config -g github-oauth.github.com $GITHUB_ACCESS_TOKEN
+      - composer install
+    finally:
+  pre_build:
+    commands:
+      - npm run standard
+      # - gulp
+    finally:
+  build:
+    commands:
+      - npm --prefix ./spadev run build ./spadev
+    finally:
+  post_build:
+    commands:
+      - service mysql start
+      - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Console/Commands/*.php
+      - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Events/*.php
+      - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Exceptions/*.php
+      - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Console/Commands/*.php
+      - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Events/*.php
+      - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Exceptions/*.php
+      - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Helpers/*.php
+      - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Http/Controllers/*.php
+      - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Http/Controllers/Api/V1/*.php
+      - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Mailers/*.php
+      - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Models/*.php
+      - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Models/Traits/*.php
+      - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Repositories/*/*.php
+      - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Services/*/*.php
+      - php ./vendor/bin/codecept run --no-colors
+    finally:

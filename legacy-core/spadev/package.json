@@ -1,0 +1,29 @@
+{
+  "name": "spadev",
+  "version": "1.0.0",
+  "description": "Build process for SPA",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js -w -v",
+    "build": "node index.js",
+    "build-prod": "node index.js -- --env prod",
+    "serve": "node serve.js"
+  },
+  "dependencies": {
+    "chokidar": "^2.0.2",
+    "colors": "^1.1.2",
+    "del": "^3.0.0",
+    "git-repo-info": "^2.0.0",
+    "glob": "^7.1.2",
+    "micromatch": "^3.1.9",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.21.0",
+    "multi-glob": "^1.0.1",
+    "parse5": "^4.0.0",
+    "rev-hash": "^2.0.0",
+    "sass": "^1.0.0-beta.5.2"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  }
+}

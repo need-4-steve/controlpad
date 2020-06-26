@@ -1,0 +1,34 @@
+image: node:latest
+
+before_script:
+  - cp .env.testing .env
+  - composer config http-basic.git.controlpad.com $GIT_USERNAME $GIT_PASSWORD
+  - composer install
+  - ./vendor/bin/codecept build
+  - ./vendor/bin/codecept clean
+  - npm i
+  - npm run legacy-build
+  - npm run standard
+  - npm --prefix ./spadev i ./spadev
+  - node spadev/index.js
+
+stages:
+  - test
+
+test:
+  script:
+  - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Console/Commands/*.php
+  - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Events/*.php
+  - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Exceptions/*.php
+  - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Console/Commands/*.php
+  - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Events/*.php
+  - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Exceptions/*.php
+  - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Helpers/*.php
+  - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Http/Controllers/*.php
+  - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Http/Controllers/Api/V1/*.php
+  - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Mailers/*.php
+  - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Models/*.php
+  - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Models/Traits/*.php
+  - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Repositories/*/*.php
+  - php ./vendor/bin/phpcs -n --standard=PSR2 --report=full app/Services/*/*.php
+  - php ./vendor/bin/codecept run --debug

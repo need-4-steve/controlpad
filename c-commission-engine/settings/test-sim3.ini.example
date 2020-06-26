@@ -1,0 +1,75 @@
+[run]
+#type either FCGI, sockets, ssl
+type = sockets
+
+[startup]
+daemon=false
+
+[database]
+# type is either mysql or postgres
+type = postgres
+database = test-sim3
+username = root
+password = password
+hostname = 127.0.0.1
+connpool = 10
+simulation = true
+
+[network]
+listen_port = 8093
+
+[multiproc]
+count = 24
+
+[max]
+systems = -1
+users = -1
+receipts = -1
+rankrules = -1
+commrules = -1
+apikeys = -1
+bonuses = -1
+pools = -1
+poolrules = -1
+
+rankgenbonus = 0
+
+[ssl]
+# Make sure the certfile and keyfile matchup with the domain name you want to use 
+certfile = /home/west/nospy/nospy.mobi.crt
+keyfile = /home/west/nospy/nospy.mobi.key
+
+[crypt]
+# This needs to be changed on initial setting up
+hashpass = (WhatHashAreYouGoingToUse???)
+
+[payments]
+# payman = through middle ware
+# local = creates local nacha files
+processing = payman
+
+[payman]
+url = https://payman.controlpad.com/payouts/commissions
+apikey = (Get Your Payman API Key from Phaedock)
+
+[nacha]
+ofid = // From Mikes file
+rfid = // From Mikes file
+
+[debug]
+logfile = /var/log/ceapi/test-sim3.log
+
+#screen, file, both
+display = both
+
+#DEBUG_OFF          	0
+#DEBUG_MESSAGE       	1
+#DEBUG_ERROR		2
+#DEBUG_WARN		3
+#DEBUG_INFO		4
+#DEBUG_SQL		5
+#DEBUG_NETWORK_IN	6
+#DEBUG_NETWORK_OUT	7
+#DEBUG_DEBUG         	8
+#DEBUG_TRACE         	9
+level = 3

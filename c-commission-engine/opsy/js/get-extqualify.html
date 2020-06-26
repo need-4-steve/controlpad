@@ -1,0 +1,30 @@
+ 
+Get External Qualification<br>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script> 
+
+orgid = "asdf1234qwer0987plwv4b5d2";
+
+authorization = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDM2NDQ4OTAsImlhdCI6MTU0MjYzNzY5MCwiaXNzIjoiYXBpLmNvbnRyb2xwYWQuY29tIiwiYXVkIjoiYXBpLmNvbnRyb2xwYWQuY29tIiwic3ViIjoxMDYsIm5hbWUiOiJBZGFoIiwiZnVsbE5hbWUiOiJBZGFoIFJlaWNoZWwiLCJyZXBTdWJkb21haW4iOiJyZXAiLCJyb2xlIjoiUmVwIiwic2VsbGVyVHlwZSI6IlJlc2VsbGVyIiwicGVybSI6eyJjb3JlOmJ1eSI6MSwiY29yZTpzZWxsIjoxfSwiYWNjZXB0ZWRUZXJtcyI6dHJ1ZSwiYWN0aXZlU3Vic2NyaXB0aW9uIjp0cnVlLCJvcmdJZCI6ImFzZGZhc2RmcXdlcnF3ZXIxMjM0MTIzNDYiLCJ0ZW5hbnRfaWQiOiIyIiwiYWN0dWFsVXNlcklkIjoxMDl9.DtxEArymqOTtUepJ1RgH6KRdg-2qm80xWLIyOqFUmc0";
+
+systemid = "1";
+command = "getextqualify";
+id = "1";
+
+var headerVals = { orgid : orgid, authorization : authorization, systemid: systemid, command : command, id : id}
+var postVals = {};
+
+$.ajax({ 
+    //url: "http://comm.dev/ceweb/api-affiliate.php",
+    url: "https://ceapidev.controlpad.com/ceweb/api-affiliate.php",
+    headers: headerVals,
+    type: "post",
+    data: postVals,
+    dataType: "json",
+  }).done(function(result){
+
+  	console.log(result);
+});
+
+</script>

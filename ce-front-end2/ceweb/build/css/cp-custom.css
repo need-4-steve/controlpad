@@ -1,0 +1,5 @@
+@media (max-width: 767px) {
+  .tile_count > .tile_stats_count {
+    width: 100%;
+  }
+}

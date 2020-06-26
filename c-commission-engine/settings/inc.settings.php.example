@@ -1,0 +1,59 @@
+<?php
+
+include '/etc/ceapi/includes/inc.settings-top.php';
+
+$g_protocol = "http://";
+
+//////////////////////////////////////////////////////
+// Define all clients running on local server below //
+//////////////////////////////////////////////////////
+$path = GetUrlPath();
+//echo "path = ".$path."<br>";
+
+// Define where actual commission engine is hosted //
+$apidomain = "ceapidev.controlpad.com";
+
+// Handle each individual company on same server //
+if ($path == "/test-live/") // Client 1 //
+{
+	// This master information is only user for creating systemuser accounts and also password reset//
+	// systemuser and user login information is tested against what's set in the database //	
+	// API email and key //
+	$g_masterauthemail = "master@commissions.com";
+	$g_masterapikey = "masterapikeygoeshere";
+
+	// API Server Locations //
+	$g_coredomain = $apidomain.":8090"; //"ce.controlpad.com";
+	$g_sim1 = $apidomain.":8091"; // Affiliate 1 //
+	$g_sim2 = $apidomain.":8092"; // Affiliate 2 //
+	$g_sim3 = $apidomain.":8093"; // Master simulaton database //
+
+	// Postgresql info for 2hour cron //
+	$g_pguser = "user account to access database";
+	$g_pghost = "where the database is being hosted";
+}
+else if ($path == "/chalk-live/") // Another company same/server //
+{
+	// API email and key //
+	$g_masterauthemail = "master@commissions.com";
+	$g_masterapikey = "681ce7721ba237a9f442c2cc3aff0db6ad13f0313d2e94981488dbfc55337";
+
+	// API Server Locations //
+	$g_coredomain = $apidomain.":8080"; //"ce.controlpad.com";
+	$g_sim1 = $apidomain.":8081"; // Affiliate 1 //
+	$g_sim2 = $apidomain.":8082"; // Affiliate 2 //
+	$g_sim3 = $apidomain.":8083"; // Master simulaton database //
+
+	// Make sure to add softlink in /var/www/ce-front-end2. Example: ln -s ceweb chalk-live
+
+	$g_pghost = "ceapidev.controlpad.com";
+}
+else
+{
+	echo "settings: CONFIGURATION FILE ERROR\n";
+}
+
+include '/etc/ceapi/includes/inc.settings-bottom.php';
+
+unset($path);
+?>

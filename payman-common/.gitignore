@@ -1,0 +1,19 @@
+/bin/
+/build/
+logs/
+/classes/
+
+# IDEA
+*.ipr
+*.iml
+*.iws
+.idea/
+
+#Gradle
+.gradle/
+
+# Mac
+*.DS_Store
+
+*~
+out/

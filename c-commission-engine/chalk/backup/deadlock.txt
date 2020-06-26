@@ -1,0 +1,63 @@
+Test new changes on Commie.
+1 - ./install.sh
+2 - Edit config files on /etc/ceapi/
+3 - Config for multiple accounts
+4 - Create the sim 1-3 databases 
+5 - Run /var/www/c-commission-engine/chalk/fix-migrations.sql on all live and sim databases created
+6 - Verify deadlock problem is gone. (Run affiliate report while doing commission run)
+
+Move over to central database (AWS? vs Office? cause of db connections)
+
+REM show max_connections;
+
+Do the same to Migrate chalk-live
+
+Monitor and watch for just a little bit
+
+
+Prepwork
+----------------
+cd /var/www/ce-front-end2/
+git status (To amke sure on master branch)
+git fetch && git pull
+
+cd /var/www/c-commission-engine/
+git status (To make sure on master branch)
+git fetch && git pull
+./make
+
+./install
+cd /etc/ceapi/
+cp test-live.ini chalk-live.ini
+cp test-sim1.ini chalk-sim1.ini
+cp test-sim2.ini chalk-sim2.ini
+cp test-sim3.ini chalk-sim3.ini
+
+## Edit each ini file properly for chalk
+vi chalk-live.ini
+vi chalk-sim1.ini
+vi chalk-sim2.ini
+vi chalk-sim3.ini
+
+createdb chalk-live
+createdb chalk-sim1
+createdb chalk-sim2
+createdb chalk-sim3
+
+psql -d chalk-live -f chalk-(date-version).sql
+psql -d chalk-sim1 -f chalk-(date-version).sql
+psql -d chalk-sim2 -f chalk-(date-version).sql
+psql -d chalk-sim3 -f chalk-(date-version).sql
+
+cd /var/www/c-commission-engine/chalk/
+psql -d chalk-live -f fix-migrations.sql
+psql -d chalk-sim1 -f fix-migrations.sql
+psql -d chalk-sim2 -f fix-migrations.sql
+psql -d chalk-sim3 -f fix-migrations.sql
+
+cd /var/www/c-commission-engine/
+./ceapi chalk-live migrate
+./ceapi chalk-sim1 migrate
+./ceapi chalk-sim2 migrate
+./ceapi chalk-sim3 migrate
+

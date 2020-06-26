@@ -1,0 +1,1 @@
+g++ *.cpp -O2 -o ceapi -I/Library/PostgreSQL/9.6/include -L/Library/PostgreSQL/9.6/lib/ -lpq -lssl -lcrypto -lcrypto++ -lpthread -ljsoncpp -lcurl

@@ -1,0 +1,10 @@
+CREATE TABLE systems(id SERIAL, system_name VARCHAR(20), compress BOOL DEFAULT false, commbinary BOOL DEFAULT false, created_at TIMESTAMP DEFAULT now(), updated_at TIMESTAMP);
+CREATE TABLE users(id SERIAL, system_id BIGINT, user_id BIGINT, sponsor_id BIGINT, rank TINYINT default 0, breakage BOOL default false, signup_date DATE, created_at TIMESTAMP DEFAULT now(), updated_at TIMESTAMP);
+CREATE TABLE receipts(id SERIAL, system_id BIGINT, receipt_id BIGINT, user_id BIGINT, amount DECIMAL(13,2), purchase_date DATE, purchase_day TINYINT, purchase_month TINYINT, purchase_year SMALLINT, commissionable BOOL, created_at TIMESTAMP DEFAULT now(), updated_at TIMESTAMP);
+CREATE TABLE levels(id SERIAL, system_id BIGINT, user_id BIGINT, ancestor_id BIGINT, level SMALLINT default 1);
+CREATE TABLE commrules(id SERIAL, system_id BIGINT, start_rank TINYINT, end_rank TINYINT, qualify_type TINYINT, qualify_threshold FLOAT, generation TINYINT, percent FLOAT, created_at TIMESTAMP DEFAULT now(), updated_at TIMESTAMP);
+CREATE TABLE rankrules(id SERIAL, system_id BIGINT, rank SMALLINT, qualify_type TINYINT, qualify_threshold FLOAT, achvbonus DECIMAL(13,2), breakage BOOL, created_at TIMESTAMP DEFAULT now(), updated_at TIMESTAMP);
+CREATE TABLE batch(id SERIAL, system_id BIGINT, start_date DATE, start_day TINYINT, start_month TINYINT, start_year SMALLINT, end_date DATE, end_day TINYINT, end_month TINYINT, end_year SMALLINT, create_at TIMESTAMP DEFAULT now(), updated_at TIMESTAMP);
+CREATE TABLE achvbonus(id SERIAL, system_id BIGINT, batch_id BIGINT, user_id BIGINT, rankrule_id BIGINT, amount DECIMAL(13,2), created_at TIMESTAMP DEFAULT now(), updated_at TIMESTAMP);
+CREATE TABLE breakdown(id SERIAL, system_id BIGINT, batch_id BIGINT, paytype TINYINT, receipt_id BIGINT, user_id BIGINT, amount DECIMAL(13,2), created_at TIMESTAMP DEFAULT now(), updated_at TIMESTAMP);
+CREATE TABLE commissions(id SERIAL, system_id BIGINT, batch_id BIGINT, user_id BIGINT, amount DECIMAL(13,2), created_at TIMESTAMP DEFAULT now(), updated_at TIMESTAMP);

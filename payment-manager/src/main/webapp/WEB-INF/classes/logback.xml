@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <contextName>Payman</contextName>
+    <property name="logLevel" value="${LOG_LEVEL:-INFO}"/>
+    <property name="debug" value="${DEBUG:-false}"/>
+
+    <if condition='property("debug").contains("true")'>
+        <then>
+            <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+                <encoder>
+                    <pattern>%d [%t] %-5level %logger{36} - %msg%n%X</pattern>
+                </encoder>
+            </appender>
+            <root level="${logLevel}">
+                <appender-ref ref="STDOUT" />
+            </root>
+        </then>
+        <else>
+            <appender name="TIME_BASED_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <file>/var/log/payman/payman.log</file>
+                <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                    <!-- daily rollover -->
+                    <fileNamePattern>/var/log/payman/payman.%d.log</fileNamePattern>
+                    <maxHistory>30</maxHistory>
+                </rollingPolicy>
+
+                <encoder>
+                    <pattern>%d [%thread] %-5level %logger{35} - %msg%nX</pattern>
+                </encoder>
+            </appender>
+            <appender name="ROLLBAR" class="com.tapstream.rollbar.RollbarAppender">
+                <apiKey>2351b679545a4c34a5579f9997b83d04</apiKey>
+                <environment>payman-manager</environment>
+                <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                    <level>ERROR</level>
+                </filter>
+            </appender>
+            <root level="${logLevel}">
+                <appender-ref ref="ROLLBAR" />
+            </root>
+        </else>
+    </if>
+
+</configuration>

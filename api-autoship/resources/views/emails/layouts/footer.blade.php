@@ -1,0 +1,2 @@
+<p style="text-align: center;"><img width="150px" src="{{$settings->back_office_logo->value}}"></p>
+<p style="text-align: center;">{{ $settings->company_name->value }} {{ $settings->address->value}}</p>

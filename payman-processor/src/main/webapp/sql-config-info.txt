@@ -1,0 +1,7 @@
+Create file 'sql-config.json' in /etc/opt/hub-mw/ and use the following format.
+
+{
+  "url":"jdbc:mysql://localhost:3306/database_name",
+  "username":"user",
+  "password":"password"
+}

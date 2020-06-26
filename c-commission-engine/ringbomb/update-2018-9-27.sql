@@ -1,0 +1,1 @@
+update ce_receipts_filter set disabled='true' where inv_type!='1';

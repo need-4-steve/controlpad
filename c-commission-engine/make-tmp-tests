@@ -1,0 +1,1 @@
+g++ *.cpp -o ceapi $(mysql_config --libs) -I/usr/include/postgresql/ -L/usr/lib/postgresql/8.3/lib/ -lpq -lcrypto++ -lcrypto -lfcgi -lssl -lcurl -ljsoncpp -lgtest -lpthread

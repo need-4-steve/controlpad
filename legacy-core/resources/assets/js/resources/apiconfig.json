@@ -1,0 +1,9 @@
+{
+  "apis": {
+      "inventory": "https://inventory.controlpadapi.com/api/v0/",
+      "events": "https://events.controlpadapi.com/api/v0/",
+      "orders": "https://orders.controlpadapi.com/api/v0/",
+      "commission": "https://ceapi.controlpad.com/ceweb/api-affiliate.php",
+      "users": "https://users.controlpadapi.com/api/v0/"
+  }
+}

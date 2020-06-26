@@ -1,0 +1,24 @@
+cd /var/www/c-commission-engine
+git fetch && git pull
+./make
+./ceapi migrate
+
+# ONLY DEMO SERVER
+#tmux
+#./ceapi api
+#(crtl-b then d)
+#tmux 
+#./ceapi sim api
+#(crtl-b then d)
+#tmux and restart api and sim
+
+# SQL update 
+cd chalk
+./update.sh
+# Update includes add-chalk-rules.php
+
+cd ..
+cd 2hour
+./chalk-2hour.sh
+
+

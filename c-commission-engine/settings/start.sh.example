@@ -1,0 +1,9 @@
+echo "Running startup..."
+
+## Startup All test connections ##
+tmux new -d -s test-live '/var/www/c-commission-engine/ceapi test-live api'
+tmux new -d -s test-sim1 '/var/www/c-commission-engine/ceapi test-sim1 api'
+tmux new -d -s test-sim2 '/var/www/c-commission-engine/ceapi test-sim2 api'
+tmux new -d -s test-sim3 '/var/www/c-commission-engine/ceapi test-sim3 api'
+
+tmux ls

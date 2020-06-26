@@ -1,0 +1,322 @@
+<html>
+<title>Controlpad API Documentation V1</title>
+<center>
+    <h2>Controlpad API Documentation V1</h2>
+</center>
+<h4>
+    Settings
+</h4>
+<p>
+    There are several settings that affect the way that the API interacts with our system.  These can
+    be configured by an Administrative User in the system by viewing the "Settings" page from the dashboard.
+</p>
+<p>
+    <b>Users can register with API:</b>
+    Allow registration through the API.
+</p>
+<p>
+    <b>Users can register without API:</b>
+    Allow user registration without using the API.
+</p>
+<h4>
+    Routes and Actions
+</h4>
+<p>
+    All requests require the header:  "Content-Type: application/json"<br />
+    All requests except for authenticate require the header:  "Authorization: Bearer {token}" where {token} is a token returned by authenticate.
+</p>
+<table>
+    <tr>
+        <th>
+            Route
+        </th>
+        <th>
+            Verb
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <b>cp/v1/authenticate</b>
+        </td>
+        <td>
+            POST
+        </td>
+        <td>
+            <p>
+                Authenticate method needs to be called to register an active session.  Authenticate will return
+                a token that will need to be included on future requests as the header: "Authorization: Bearer {token}".
+                <br /><br />
+                Example request:<br />
+                {<br />
+                    "email": "Fred@mail.com",<br />
+                    "password": "1234"<br />
+                }<br /><br />
+
+                Example response:<br />
+                {<br />
+                    "token": "oqiweohqwdSAKLDUQWEsjadqw8e123n41"<br />
+                }
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>cp/v1/registration/check/{domain}</b>
+        </td>
+        <td>
+            GET
+        </td>
+        <td>
+            <p>
+                Returns a response to indicate if the given domain has already been used.
+
+                Example response:
+                {
+                    'Available'
+                }
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>cp/v1/join/{token}</b>
+        </td>
+        <td>
+            GET
+        </td>
+        <td>
+            <p>
+                Returns a page for registering a user if the {token} is a valid token.
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>cp/v1/orders/mcomm</b>
+        </td>
+        <td>
+            POST
+        </td>
+        <td>
+            <p>
+                Mcomm specific order searching.  Returns a json array of formatted orders.<br /><br />
+                Request:<br />
+                    "start_date": Start date to pull orders for<br />
+                    "end_date": End date to pull orders from<br />
+                    "AssociateId": User token to lookup a specific user<br /><br />
+                Example Request:<br />
+                    "start_date": "2017-03-15 19:01:37",<br />
+                    "end_date": "2017-04-15 19:01:37",<br />
+                    "AssociateId": "TEST"<br /><br />
+                Example Response:<br />
+                {<br />
+                    "OrderNum": "SDQF88-618",<br />
+                    "AssociateId": TEST,<br />
+                    "SellerId": 1,<br />
+                    "BuyerId": 106,<br />
+                    "Discount": 12<br />
+                    "OrderDate": "2017-05-20T22:15:47",<br />
+                    "TotalAmount": 40.65,<br />
+                    "ShipAmount": 13,<br />
+                    "TaxAmount": 3.05,<br />
+                    "PaidAmount": 56.7,<br />
+                    "Status": 3,<br />
+                    "OrderType": 2<br />
+                }<br />
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>cp/v1/orders</b>
+        </td>
+        <td>
+            POST
+        </td>
+        <td>
+            <p>
+                Customizable order searching.<br /><br />
+
+                Request:<br />
+                    "customer_id":  Null for all customers or specific id<br />
+                    "store_owner_user_id": store owner or 'all'<br />
+                    "type":<br />
+                               1- corp to rep<br />
+                               2- corp to customer<br />
+                               3- rep to customer<br />
+                               4- rep to rep<br />
+                               5- corp to admin)<br />
+                    "fulfilled": null for all or fulfilled/unfulfilled<br />
+                    "start_date": datetime indicating start date<br />
+                    "end_date": datetime indicating end date<br />
+                    "search_term": null to ignore or string to match receipt ID or purchaser name<br />
+                    "column": null for all or column to sort by<br />
+                    "order": 'DESC' for descending, 'ASC' for ascending<br /><br />
+
+                Example request:<br />
+                    {<br />
+                        "customer_id": null,<br />
+                        "store_owner_user_id": "all",<br />
+                        "type": 1,<br />
+                        "fulfilled": null,<br />
+                        "start_date": "2017-03-15 19:01:37",<br />
+                        "end_date": "2017-04-15 19:01:37",<br />
+                        "search_term": null,<br />
+                        "column": null,<br />
+                        "order": "ASC"<br />
+                    }
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>cp/v1/returns</b>
+        </td>
+        <td>
+            POST
+        </td>
+        <td>
+                Return a list of items that have been returned from the system<br /><br />
+                Request:<br />
+                "search_term": order_id or null for all<br />
+                "column": column to sort by<br />
+                "order": order to sort, either ASC or DESC.  Defaults to descending<br />
+                "per_page": amount to show per page if pagination required or null<br />
+                "user_id": specific user id or null for all<br />
+                "order_type_id": null for all or type id:<br />
+                           1- corp to rep<br />
+                           2- corp to customer<br />
+                           3- rep to customer<br />
+                           4- rep to rep<br />
+                           5- corp to admin<br /><br />
+                Example request:<br />
+                {<br />
+                    "search_term": null,<br />
+                    "column": "id",<br />
+                    "order": "ASC",<br />
+                    "per_page": null,<br />
+                    "user_id": null,<br />
+                    "order_type_id": null<br />
+                }
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>cp/v1/users</b>
+        </td>
+        <td>
+            PATCH
+        </td><br />
+        <td>
+            <p>
+                Update a user in our system<br /><br />
+                Request:<br />
+                token:  matches original user token<br />
+                email: new email address<br />
+                password: new password<br />
+                phone: new phone number<br />
+                    "number": phone number,<br />
+                    "label": (Business, Shipping, Billing)<br />
+                shipping_address:<br />
+                billing_address:<br />
+                business_address:<br /><br />
+
+                The above addresses are objects with:<br />
+                    "name": name of the address,<br />
+                    "address_1": street address<br />
+                    "address_2": apt number etc<br />
+                    "city": city<br />
+                    "state": state<br />
+                    "zip": zip code<br /><br />
+
+                Role: can pass in a role id to grab specific types of returns<br /><br />
+                Example request:<br />
+                {<br />
+                    "token": "9027yhadsiy2973asu87123123",<br />
+                    "email": "controlpad@gmail.com",<br />
+                    "password": "233452",<br />
+                    "phone": {<br />
+                        "number": 2459812,<br />
+                        "label": "Billing"<br />
+                    },<br />
+                    "role": null,<br />
+                    "shipping_address": {<br />
+                        "name": "Home",<br />
+                        "address_1": "553 East Technology Way",<br />
+                        "address_2": "C1300",<br />
+                        "city": "Orem",<br />
+                        "state": "Utah",<br />
+                        "zip": 84058<br />
+                    }<br />
+                    "billing_address": {<br />
+                        "name": "Home",<br />
+                        "address_1": "553 East Technology Way",<br />
+                        "address_2": "C1300",<br />
+                        "city": "Orem",<br />
+                        "state": "Utah",<br />
+                        "zip": 84058<br />
+                    }<br />
+                    "business_address": {<br />
+                        "name": "Home",<br />
+                        "address_1": "553 East Technology Way",<br />
+                        "address_2": "C1300",<br />
+                        "city": "Orem",<br />
+                        "state": "Utah",<br />
+                        "zip": 84058<br />
+                    }<br />
+                }
+            </p>
+        </td>
+        <tr>
+            <td>
+                <b>cp/v1/users/create</b>
+            </td>
+            <td>
+                POST
+            </td>
+            <td>
+                <p>
+                Create a new user token in our system for new user registration.  Fields included in this data will<br />
+                be locked for editing during the initial create process.<br /><br />
+                This end point will return a response containing the data sent over and a 'token' field.  This token can be saved and used with the above PATCH update request.<br /><br />
+                first_name: User's first name.<br />
+                last_name: User's last name.<br />
+                email: User's email.<br />
+                address_1: Street address.<br />
+                address_2: Appartment or building number<br />
+                city: City the user is in.<br />
+                state: State the user is in.<br />
+                zip: Zip code for the user.<br />
+                phone: Phone number for the user.<br />
+                public_id: This corresponds to the "website" field, this is the subdomain the rep is registering.<br />
+                public_id example- With a public_id of "rep", their website would then be rep.controlpad.com (if the company site was controlpad.com)<br /><br />
+                Example request:<br />
+                    "first_name": "Sid",<br />
+                    "last_name": "Mendes",<br />
+                    "email": "sidm@mail.com",<br />
+                    "address_1": "553 East Technology Way",<br />
+                    "address_2": "C1300",<br />
+                    "city": "Orem",<br />
+                    "state": "Utah",<br />
+                    "zip": "84058",<br />
+                    "phone": "2296687985",<br />
+                    "public_id": "sidmendesstore"<br />
+                </p>
+            </td>
+        </tr>
+    </tr>
+</table>
+</html>
+
+<style lang="sass">
+    tr {
+        vertical-align:top;
+    }
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>

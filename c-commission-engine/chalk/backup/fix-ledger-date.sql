@@ -1,0 +1,12 @@
+UPDATE ce_ledger SET event_date='2017-07-31' WHERE ledger_type='3' AND batch_id=6;
+UPDATE ce_ledger SET event_date='2017-07-31' WHERE ledger_type='3' AND batch_id=8;
+UPDATE ce_ledger SET event_date='2017-08-31' WHERE ledger_type='3' AND batch_id=9;
+UPDATE ce_ledger SET event_date='2017-08-31' WHERE ledger_type='3' AND batch_id=10;
+UPDATE ce_ledger SET event_date='2017-09-30' WHERE ledger_type='3' AND batch_id=13;
+UPDATE ce_ledger SET event_date='2017-09-30' WHERE ledger_type='3' AND batch_id=14;
+UPDATE ce_ledger SET event_date='2017-10-31' WHERE ledger_type='3' AND batch_id=17;
+UPDATE ce_ledger SET event_date='2017-10-31' WHERE ledger_type='3' AND batch_id=18;
+UPDATE ce_ledger SET event_date='2017-11-30' WHERE ledger_type='3' AND batch_id=21;
+UPDATE ce_ledger SET event_date='2017-11-30' WHERE ledger_type='3' AND batch_id=22;
+UPDATE ce_ledger SET event_date='2017-12-31' WHERE ledger_type='3' AND batch_id=23;
+UPDATE ce_ledger SET event_date='2017-12-31' WHERE ledger_type='3' AND batch_id=24;

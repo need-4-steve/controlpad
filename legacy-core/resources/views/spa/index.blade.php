@@ -1,0 +1,35 @@
+<!doctype html>
+<html v="5179ed8" vv="5179ed86fad6ed160ac8ac890a2523e72b225979" b="mcommengine">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ app('globalSettings')->getGlobal('company_name', 'value') }}</title>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="//cdn.materialdesignicons.com/2.1.99/css/materialdesignicons.min.css" />
+  <link rel="stylesheet" href="/www/app.db34d2e7da.css" />
+</head>
+<body>
+  <label id="hexvalue" style="display: none;"> #{{ app('globalSettings')->getGlobal('hex_color', 'value') }}</label>
+  <input type="hidden" id="global-settings" />
+  <div id="vue-app"><router-view></router-view></div>
+
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" global="$" aliases="jquery|$"></script>
+  <script src="//cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js" global="_" aliases="lodash|_"></script>
+  <script src="//cdn.jsdelivr.net/npm/moment@2.20.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.7.1/rollbar.min.js" global="rollbar" aliases="rollbar"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.17/moment-timezone-with-data.min.js" global="moment" aliases="moment|moment-timezone"></script>
+  <script src="//cdn.jsdelivr.net/npm/marked@0.3.16/lib/marked.min.js" global="marked" aliases="marked"></script>
+  <script src="//cdn.jsdelivr.net/npm/dropzone@5.3.0/dist/dropzone.min.js" global="Dropzone" aliases="dropzone"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" global="Clipboard" aliases="clipboard"></script>
+  <script src="//cdn.jsdelivr.net/npm/quill@1.3.5/dist/quill.min.js" global="Quill" aliases="quill"></script>
+  <script src="//cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js" global="vue"></script>
+  <script src="//cdn.jsdelivr.net/npm/vue-resource@1.4.0/dist/vue-resource.min.js" global="VueResource" aliases="vue-resource"></script>
+  <script src="//cdn.jsdelivr.net/npm/vue-router@3.0.1/dist/vue-router.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/v-mask@1.3.2/dist/v-mask.min.js" global="VueMask" aliases="v-mask"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js" global="d3"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue-google-maps/0.1.21/vue-google-maps.js" global="VueGoogleMap" aliases="vue-google-maps"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer_compiled.js" global="markerclusterer" aliases="marker-clusterer-plus"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.min.js"></script>
+  <script src="/www/app.57261320c4.js"></script>
+</body>
+</html>

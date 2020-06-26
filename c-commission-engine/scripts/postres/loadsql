@@ -1,0 +1,2 @@
+psql ce < users.sql
+psql ce < receipts.sql

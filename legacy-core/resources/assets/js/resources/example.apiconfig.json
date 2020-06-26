@@ -1,0 +1,4 @@
+{
+    "inventory": "https://inventory.controlpadapi.com/api/v0/",
+    "orders": "https://orders.controlpadapi.com/api/v0/"
+}

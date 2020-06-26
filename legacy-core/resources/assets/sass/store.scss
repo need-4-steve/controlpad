@@ -1,0 +1,63 @@
+// @import 'var.scss';
+@import 'main.scss';
+@import 'styles.scss'; // to be removed
+@import 'libraries/linear_icons.scss';
+@import 'libraries/dropzone.scss';
+
+
+// VARIABLES
+// _________________
+
+// WIDTHS
+
+.cp-content-wrapper {
+	max-width: 1024px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.cp-store-header-logo {
+    max-height: 40px;
+    padding-top: 10px;
+    img {
+        max-width: 170px;
+    }
+}
+
+/*
+    FACEBOOK LIVE STYLES
+*/
+
+.live-streaming-announcement {
+    padding: 15px;
+    background: $cp-main;
+    color: $cp-main-inverse;
+    display: flex;
+    .col {
+        flex: 1;
+        &.right {
+            text-align: right;
+        }
+    }
+}
+
+
+// between ipad and desktop
+@media (max-width: 1150px) {
+
+}
+// ipad
+@media (max-width: 768px) {
+    .hide-header-link {
+        display: none;
+    }
+}
+//phones
+@media (max-width: 767px) {
+    .cp-content-wrapper {
+        padding: 0;
+    }
+}
+
+
+@import 'store-styles.scss'

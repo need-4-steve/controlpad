@@ -1,0 +1,2 @@
+g++ -c -fPIC EzComm.c -o EzComm.o
+g++ -shared -o EzComm.so EzComm.o

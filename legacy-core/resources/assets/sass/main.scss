@@ -1,0 +1,1103 @@
+// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import 'var.scss';
+
+html {
+    min-height: 100%;
+}
+body {
+    position: relative;
+    height: auto;
+    font-family: $cp-fontFamily;
+    font-weight: 300;
+    background-color: #fff;
+}
+a {
+    color: $cp-LightBlue;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: $cp-fontFamily;
+    &:hover {
+        text-decoration: none;
+        color: $cp-NavyBlue;
+    }
+}
+h1, h2, h3, h4 {
+    font-weight: 300;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid $cp-lightGrey;
+}
+
+table {
+    th {
+        font-weight: 400;
+    }
+}
+label {
+    margin-bottom: 2px;
+    margin-top: 5px;
+    margin-left: 3px;
+    color: $cp-darkGrey;
+}
+.errorText {
+  font-size: 18px;
+  color: tomato;
+}
+/*
+    FORMS AND GENERAL INPUT STYLES
+*/
+input {
+    &.error {
+        border: 1px solid tomato;
+    }
+    &.success {
+        border: 1px solid $cp-success !important;
+    }
+}
+
+[class*=" mdi-"]::before,
+[class^=mdi-]::before{
+  display: inline-block;
+  font: normal normal normal 24px/1 "Material Design Icons";
+  font-size: inherit;
+  text-rendering: auto;
+  line-height: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-size: 24px;
+  line-height: 24px;
+  vertical-align: middle;
+}
+
+.mdi::before {
+    font-size: 24px;
+}
+.btn .mdi::before {
+    position: relative;
+    top: 4px;
+}
+.btn-xs .mdi::before {
+    font-size: 18px;
+    top: 3px;
+}
+.btn-sm .mdi::before {
+    font-size: 18px;
+    top: 3px;
+}
+.dropdown-menu .mdi {
+    width: 18px;
+}
+.dropdown-menu .mdi::before {
+    position: relative;
+    top: 4px;
+    left: -8px;
+}
+.nav .mdi::before {
+    position: relative;
+    top: 4px;
+}
+.navbar .navbar-toggle .mdi::before {
+    position: relative;
+    top: 4px;
+    color: #FFF;
+}
+.breadcrumb .mdi::before {
+    position: relative;
+    top: 4px;
+}
+.breadcrumb a:hover {
+    text-decoration: none;
+}
+.breadcrumb a:hover span {
+    text-decoration: underline;
+}
+.alert .mdi::before {
+    position: relative;
+    top: 4px;
+    margin-right: 2px;
+}
+.input-group-addon .mdi::before {
+    position: relative;
+    top: 3px;
+}
+.navbar-brand .mdi::before {
+    position: relative;
+    top: 2px;
+    margin-right: 2px;
+}
+.list-group-item .mdi::before {
+    position: relative;
+    top: 3px;
+    left: -3px
+}
+.cp-input-error {
+    border: 1px solid tomato !important;
+}
+.cp-validation-errors {
+    font-family: arial;
+    display: block;
+    color: black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    width: 100%;
+    color: tomato;
+    text-align: left;
+}
+
+.cp-clickable {
+    cursor: pointer;
+}
+.cp-warning-message {
+    font-family: arial;
+    display: block;
+    color: black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    width: 100%;
+    color: tomato;
+    text-align: left;
+}
+.cp-success-message {
+    font-family: arial;
+    display: block;
+    color: black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    width: 100%;
+    color: $cp-success;
+    text-align: left;
+}
+
+.cp-form-standard {
+    input {
+        @extend .cp-input-standard;
+        &.error {
+            border: 1px solid tomato;
+        }
+        &.success {
+            border: 1px solid $cp-success;
+        }
+    }
+}
+
+.cp-input-standard {
+    width: 100%;
+    background-color: $cp-lighterGrey;
+    border: 0;
+    border-radius: 4px;
+    height: 30px;
+    padding: 3px 0px 3px 7px;
+    font: $cp-standardFontSize $cp-fontFamily;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    &.error {
+        border: 1px solid tomato;
+    }
+    &.success {
+        border: 1px solid $cp-success;
+    }
+}
+
+.cp-select-standard {
+    position: relative;
+    background: rgba(248,248,248, 1);
+    height: 38px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font: $cp-standardFontSize $cp-fontFamily;
+    &:after {
+        position: absolute;
+        right: 5px;
+        top: 11px;
+        font-family: "Linearicons";
+        content: "\e93a";
+        font-size: 10px;
+        pointer-events: none;
+    }
+    label {
+        display: inline-block;
+    }
+    select {
+        height: 38px;
+        width: 100%;
+        border: none;
+        width: 100%;
+        padding: 0px;
+        border-radius: 3px !important;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -webkit-border-radius: 0px;
+        text-align: left;
+        text-align-last: left;
+        text-indent: 10px;
+        background: $cp-lighterGrey;
+        font: $cp-standardFontSize $cp-fontFamily;
+        option {
+            text-align: center;
+        }
+    }
+}
+
+.cp-form-registration {
+  @extend .cp-form-standard;
+  display: flex;
+  background-color: transparent;
+  input {
+      background: white !important;
+      border: 1px solid $cp-lightGrey !important;
+  }
+  select {
+      background: white !important;
+      border: 1px solid $cp-lightGrey !important;
+  }
+  .col {
+    flex: 1;
+    padding: 15px;
+    &:first-child {
+        padding-left: 0px;
+    }
+    &:last-child {
+        padding-right: 0px;
+    }
+  }
+}
+
+.cp-form-inverse {
+    @extend .cp-form-standard;
+    background-color: transparent;
+    input {
+        background: white !important;
+        border: 1px solid $cp-lightGrey;
+        &.error {
+            border: 1px solid tomato !important;
+        }
+        &.success {
+            border: 1px solid $cp-success !important;
+        }
+        &.disabled {
+            background: #f5f5f5 !important;
+        }
+    }
+    select {
+        background: white !important;
+        border: 1px solid $cp-lightGrey !important;
+        width: 100% !important;
+        display: block;
+        &.disabled {
+            background: #f5f5f5 !important;
+        }
+    }
+    .cp-select-standard {
+        width: 100%;
+        display: block;
+    }
+}
+
+label {
+    font-weight: 100;
+}
+
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  // color: #dedede;
+  color: lighten($cp-main, 35%);
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: lighten($cp-main, 35%);
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: lighten($cp-main, 35%);
+}
+:-moz-placeholder { /* Firefox 18- */
+    color: lighten($cp-main, 35%);
+}
+
+
+/*
+    GENERAL TABLE STYLES
+*/
+.cp-table-standard {
+    width: 100%;
+    border-collapse: collapse;
+    th {
+        &:first-child {
+            border-top-left-radius: 3px;
+        }
+        &:last-child {
+            border-top-right-radius: 3px;
+        }
+        cursor: pointer;
+        font-weight: 400;
+        background-color: $cp-main;
+        color: $cp-main-inverse;
+    }
+    tr:nth-child(even) {background: $cp-lighterGrey}
+    td, th {
+      padding: 10px;
+      text-align: left;
+
+    }
+}
+.cp-table-mobile{
+  display: none;
+}
+.cp-table-light-header {
+    @extend .cp-table-standard;
+    th {
+        color: $cp-main-inverse;
+        background-color: lighten($cp-main, 20%);
+    }
+}
+
+.cp-table-inverse {
+    width: 100%;
+    border-collapse: collapse;
+    th {
+        font-weight: 400;
+    }
+    td, th {
+        background-color: $cp-main-inverse;
+        color: $cp-main;
+        padding: 10px;
+        text-align: left;
+        border-top: 1px solid $cp-lightGrey;
+    }
+}
+/*
+    BOXES OR PANELS
+*/
+.cp-box-standard {
+    text-align: left;
+    margin: 5px;
+    .cp-box-heading {
+        position: relative;
+        padding: 10px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        h5 {
+            margin: 0;
+            display: inline-block;
+            margin-right: 0px;
+            font-weight: 300;
+            font-size: 1.2em;
+        }
+        background-color: $cp-main;
+        color: $cp-main-inverse;
+        button {
+            cursor: pointer;
+            position: absolute;
+            right: 0;
+            top: 0;
+            margin: 0;
+            height: 100%;
+            width: 43px;
+            border: 0;
+            background-color: lighten($cp-main, 20%);
+            &.save {
+                background-color: $cp-green;
+            }
+        }
+    }
+    .cp-box-body {
+        padding: 10px;
+        border: 1px solid $cp-lightGrey;
+    }
+    input {
+        width: 100%;
+        border: 0;
+        height: 30px;
+        padding: 3px;
+        &.error {
+            border: 1px solid tomato;
+        }
+        &.success {
+            border: 1px solid $cp-success;
+        }
+    }
+}
+.cp-panel-standard {
+    background-color: $cp-lighterGrey;
+    padding: 10px;
+    border-radius: $borderRadiusLarge
+}
+.cp-panel-border {
+    padding: 10px;
+    background-color: white;
+    border: 1px solid $cp-lightGrey;
+    margin: 5px;
+}
+/*
+    BUTTONS
+*/
+.cp-button-standard {
+    background: $cp-main;
+    border: solid 1px $cp-main;
+    border-radius: 2px;
+    color: $cp-main-inverse;
+    text-align: center;
+    padding: 4px 25px;
+    font-size: $cp-standardFontSize;
+    transition: all 0.3s ease 0s;
+    -webkit-transition: all 0.3s ease 0s;
+    cursor: pointer;
+    &.green {
+        background: $cp-green;
+    }
+    &.warning {
+        background: tomato;
+    }
+    &.yellow {
+        background: darken(#fff17c, 15%);
+        color: black;
+        border: solid 1px darken(#fff17c, 15%);
+    }
+    &.attention {
+        background: $cp-attention;
+    }
+    &.print-btn {
+        background: $cp-main;
+        color: white;
+        font-size: $cp-standardFontSize;
+        text-decoration: none;
+    }
+    &:hover {
+        background-color: lighten($cp-main, 15%);
+        border: solid 1px lighten($cp-main, 15%);
+        &.green {
+            background: white;
+            border: solid 1px $cp-green;
+        }
+        &.yellow {
+            background: #fff17c;
+            border: solid 1px #fff17c;
+        }
+        &.print-btn {
+            background: lighten($cp-main, 15%);
+            border: solid 1px lighten($cp-main, 15%);;
+        }
+    }
+    &:disabled {
+        background: lighten($cp-main, 40%);
+        border-color: lighten($cp-main, 40%);
+        :hover {
+            background: lighten($cp-main, 40%);
+            border-color: lighten($cp-main, 40%);
+        }
+    }
+}
+
+.cp-button-link {
+    @extend .cp-button-standard;
+    text-decoration: none;
+
+    &:hover {
+        color: $cp-main-inverse;
+        text-decoration: none;
+    }
+    &:focus {
+        color: $cp-main-inverse;
+        text-decoration: none;
+    }
+    &,visited {
+        color: $cp-main-inverse;
+        text-decoration: none;
+    }
+}
+// TODO: move these to a component?
+.cp-announcements {
+    width: 100%;
+    min-width: 300px;
+    max-width: 350px;
+    float: right;
+}
+.cp-annnouncement-wrapper {
+    ul {
+        padding-top: 15px;
+        padding-left: 0;
+        list-style-type: none;
+    }
+    li {
+        box-shadow: 0px 1px 4px 0px #bbb;
+        padding: 10px;
+        a {
+            display: flex;
+            -webkit-display: flex;
+            justify-content: space-between;
+            -webkit-justify-content: space-between;
+            text-decoration: none;
+            &:hover {
+                color: inherit;
+            }
+        }
+    }
+    h3 {
+        font-size: 16px;
+    }
+    h4 {
+        margin: 10px 0;
+        font-size: 18px;
+    }
+}
+// TODO: fix nameing convention or move this to component
+.invoice-wrapper {
+    position: relative;
+    max-width: 768px;
+    margin: 0 auto;
+    .invoice-header {
+        padding-top: 75px;
+        text-align: center;
+        h1 {
+            font-size: 36px;
+            color: #0198E1;
+        }
+    }
+    .invoice-table {
+        margin-top: 50px;
+        padding: 10px;
+    }
+    .invoice-subtotal {
+        padding: 10px;
+        border-top: solid 1px #eee;
+        border-bottom: solid 1px #eee;
+    }
+    .invoice-total {
+        padding: 10px;
+        font-weight: 500;
+    }
+    .input-wrapper {
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 300;
+            margin-bottom: 0;
+            &.product-name {
+                display: inline-block;
+            }
+        }
+        input {
+            height: 100%;
+            width: 100%;
+            height: 30px;
+            background: $cp-lighterGrey;
+            border: none;
+            text-indent: 10px;
+            margin: 5px 0;
+        }
+        .half {
+            width: 48%;
+        }
+        .sub-wrapper {
+            display: flex;
+            -webkit-display: flex;
+            justify-content: space-between;
+            -webkit-justify-content: space-between;
+            input {
+                width: 48%;
+            }
+        }
+    }
+    label {
+        font-weight: 300;
+        &.total {
+            font-weight: 500;
+        }
+        &.qty {
+            margin: 0 5px;
+            display: none;
+        }
+    }
+    .select-wrapper {
+        position: relative;
+        select {
+            height: 100%;
+            width: 100%;
+            height: 30px;
+            background: $cp-lighterGrey;
+            border: none;
+            text-indent: 10px;
+            margin: 5px 0;
+            -webkit-appearance: none;
+            -webkit-border-radius: 0;
+        }
+        &:after {
+            position: absolute;
+            right: 5px;
+            top: 13px;
+            font-family: "Linearicons";
+            content: "\e93a";
+            font-size: 10px;
+            pointer-events: none;
+        }
+    }
+    .line-wrapper {
+        display: flex;
+        -webkit-display: flex;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+    }
+    .cart-table {
+        width: 100%;
+        .preview {
+            width: 50px;
+        }
+        .qty {
+            max-width: 50px;
+            text-align: center;
+        }
+    }
+}
+.cp-left-col {
+    float: left;
+    width: 50%;
+}
+.cp-right-col {
+    float: right;
+    width: 50%;
+}
+input[type=checkbox].toggle-switch {
+    position: relative;
+    appearance: none;
+    -webkit-appearance: none;
+    moz-appearance: none;
+    width: 40px;
+    height: 25px;
+    border-radius: 30px;
+    background: #ddd;
+    outline: 0;
+    cursor: pointer;
+    transition: background .3s ease-in-out;
+    &:after {
+      content: '';
+      width: 23px;
+      height: 100%;
+      background: #fff;
+      border-radius: 30px;
+      position: absolute;
+      left: 0;
+      transform: scale(0.8);
+      transition: left .3s ease-in-out;
+      box-shadow: 0 0 3px rgba(0,0,0, .5);
+    }
+}
+input[type=checkbox].toggle-switch:checked {
+  background: $cp-green;
+  &:after {
+    left: 16px;
+  }
+}
+
+.cp-accordion {
+    .cp-accordion-head {
+        position: relative;
+        padding: 0 10px;
+        cursor: pointer;
+        color: $cp-main;
+        border-bottom: solid 1px #eee;
+        transition: all 0.3s ease 0s;
+        -webkit-transition: all 0.3s ease 0s;
+        .arrow {
+            position: absolute;
+            top: 3px;
+            right: 5px;
+        }
+        &:hover {
+            color: lighten($cp-main, 20%);
+        }
+    }
+    .cp-accordion-body {
+        height: auto;
+        overflow-y: hidden;
+        transition: max-height .2s ease-in-out;
+        &.closed {
+            max-height: 0;
+        }
+    }
+    .cp-accordion-body-wrapper {
+        padding: 5px;
+    }
+}
+/* MODAL STYLES */
+.cp-modal-standard {
+    overflow: scroll;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,.85);
+    transition: opacity .5s ease;
+    z-index: 1000;
+    .cp-modal-header {
+        text-align: center;
+        padding: 10px;
+        h5 {
+            margin: 0;
+            display: inline-block;
+            margin-right: 0px;
+            font-weight: 300;
+            font-size: 1.2em;
+        }
+        margin-bottom: 20px;
+    }
+    .cp-modal-body {
+        overflow: hidden;
+        max-width: 700px;
+        background: white;
+        margin: 50px auto;
+        padding: 20px;
+        transition: all .5s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+        &.wide {
+            max-width: none;
+            width: 85%;
+        }
+        .cp-modal-controls {
+            margin-top: 5px;
+            width: 100%;
+            .left {
+                float: left;
+            }
+            .right {
+                float: right;
+            }
+        }
+        .close-modal {
+            width: 100%;
+            display: block;
+            text-align: right;
+        }
+    }
+    .cp-modal-body-full {
+        @extend .cp-modal-body;
+        max-width: 85%;
+    }
+}
+
+/* VUE TRANSITIONS  */
+// TODO: prefix thsese styles with cp
+/* These class names are auto applied by vue with transiction="modal" */
+.modal-enter, .modal-leave {
+  opacity: 0;
+}
+.modal-enter .modal-container,
+.modal-leave .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.fade-transition {
+  transition: all .3s ease;
+}
+.fade-enter, .fade.leave {
+  opacity: 0;
+}
+
+/* GRID STYLES */
+
+.cp-grid-standard {
+    box-sizing: border-box;
+    max-width: $maxPageWidth;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    .cp-cell {
+        box-sizing: border-box;
+        width: calc(100% / 4);
+        text-align: center;
+        padding: 5px;
+        padding-bottom: 10px;
+        img {
+            width: 95%;
+        }
+    }
+    .cp-cell-10 {
+        @extend .cp-cell;
+        width: calc(100% / 10);
+    }
+    .cp-cell-5 {
+        @extend .cp-cell;
+        width: calc(100% / 5);
+    }
+    .cp-cell-2 {
+        @extend .cp-cell;
+        width: calc(100% / 2);
+    }
+    .cp-cell-3 {
+        @extend .cp-cell;
+        width: calc(100% / 3);
+    }
+}
+
+.cp-grid-standard:after {
+  content: "";
+  flex: auto;
+}
+
+@media (max-width: 1024px) {
+    .cp-grid-standard {
+
+    }
+}
+
+@media (max-width: 768px) {
+    .cp-grid-standard {
+        .cp-cell {
+            width: calc(100% / 3);
+        }
+    }
+
+}
+
+@media (max-width: 500px) {
+    .cp-grid-standard {
+        .cp-cell {
+            width: calc(100% / 2);
+        }
+    }
+}
+
+.cp-image-grid-standard {
+    display: flex;
+    -webkit-display: flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    .cp-image-grid-box {
+        box-sizing: border-box;
+        font-size: 16px;
+        width: 31.5%;
+        margin: 4px;
+        margin-bottom: 20px;
+        transition: all 0.5s ease 0s;
+        -webkit-transition: all 0.5s ease 0s;
+    }
+    .cp-image-grid-box:hover {
+        cursor: pointer;
+        border: 1px solid $cp-lightGrey;
+        transform: scale(1.05);
+        -webkit-transform: scale(1.05);
+    }
+    .cp-grid-image {
+        width: 100%;
+    }
+    .cp-grid-caption {
+        padding: 10px;
+        background: white;
+    }
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+
+// between ipad and desktop
+@media (max-width: 1150px) {
+    // TODO: move this to a component?
+    .cp-announcements {
+        max-width: 500px;
+        float: none;
+    }
+}
+// ipad
+@media (max-width: 768px) {
+    .cp-modal-standard{
+        .cp-announcements {
+            margin: 0 auto;
+        }
+        .cp-modal-body {
+            margin: 5px auto;
+        }
+        .cp-model-body-full {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+        }
+    }
+}
+@media (max-width: 500px) {
+    .cp-modal-body {
+        .media-file {
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+//phones
+@media (max-width: 768px) {
+    .cp-image-grid-standard {
+        display: block;
+        .cp-image-grid-box {
+            margin: 0 auto;
+            width: 100%;
+        }
+        .cp-grid-image {
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
+    .desktop {
+      display: none;
+  }
+    .cp-table-mobile{
+      display: block;
+        & > div {
+          border-radius: 2px;
+          padding-left: 45px;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          background: white;
+          box-shadow: 1px 1px 1px 1px #ccc;
+          margin: 10px;
+          padding: 10px 20px;
+          div > span:nth-child(even){
+          font-weight: bold;
+          }
+        }
+        & > div:nth-child(odd){
+        background: $cp-lighterGrey;
+        }
+    }
+    .cp-table-mobile-wrapper > section:nth-child(odd){
+    background-color: $cp-lighterGrey;
+    }
+   #description{
+      width: 90% !important;
+    }
+    .coupon-wrapper .box2 #uses {
+    width: 70% !important;
+    }
+
+    .product-grid{
+      width: 100% !important ;
+      max-width: 360px;
+    }
+}
+
+// TODO: clean this up so it's following conventions
+.dot { display: inline-block; height: 7px; width: 7px; border-radius: 50%; margin-right: 3px; }
+.green { background: rgb(0,255,0); }
+
+
+// TAGS
+.cp-list-tags {
+    display: flex;
+    -webkit-display: flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    padding-left: 0;
+    list-style-type: none;
+    li {
+        position: relative;
+        border: solid 1px #eee;
+        padding: 5px;
+        margin: 5px;
+        span {
+            margin-left: 5px;
+        }
+    }
+}
+
+/* TABS */
+.cp-tabs-standard {
+    background-color: $cp-main;
+    border-radius: 3px;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    button {
+        float: left;
+        border-radius: 0px !important;
+        border: none;
+        font-size: 15px;
+        padding: 15px;
+        color: white;
+        background-color: $cp-main;
+        transition: all 0.3s ease 0s;
+        -webkit-transition: all 0.3s ease 0s;
+        &.active {
+            color: $cp-main;
+            background-color: $cp-lighterGrey;
+        }
+    }
+    button:hover {
+        background-color: lighten($cp-main, 15%);
+        &.active {
+            color: $cp-main;
+            background-color: $cp-lighterGrey;
+        }
+    }
+    .order-update-button {
+        float: right;
+    }
+    .status-select {
+        float: right;
+        display: inline;
+        position: relative;
+        background: rgba(248,248,248, 1);
+        height: 31px;
+        width: 155px;
+        margin: 10px;
+        &:after {
+            position: absolute;
+            right: 5px;
+            top: 10px;
+            font-family: "Linearicons";
+            content: "\e93a";
+            font-size: 10px;
+            pointer-events: none;
+        }
+        select {
+            height: 31px;
+            width: 155px;
+            border: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -webkit-border-radius: 0px;
+            text-align: left;
+            text-align-last: left;
+            text-indent: 10px;
+            background: $cp-lighterGrey;
+        }
+    }
+}
+
+.cp-tabs-light {
+    @extend .cp-tabs-standard;
+    background-color: $cp-lighterGrey;
+    button {
+        background: $cp-lighterGrey;
+        color: $cp-main;
+        &.active {
+            background-color: darken($cp-lightGrey, 15%);
+        }
+    }
+    button:hover {
+        background-color: darken($cp-lightGrey, 15%);
+        &.active {
+            // color: $cp-main;
+            background-color: darken($cp-lightGrey, 15%);
+        }
+    }
+}
+
+// quill overriding styles
+
+.ql-tooltip {
+    left: 0px !important;
+}

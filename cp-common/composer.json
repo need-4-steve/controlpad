@@ -1,0 +1,22 @@
+{
+    "name": "web/cp-common",
+    "description": "Common php code for all microservices",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "ramsey/uuid": "^3.7",
+        "brick/math": "^0.7.1",
+        "rollbar/rollbar": "^1.4",
+        "php-amqplib/php-amqplib": "^2.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "CPCommon\\": "",
+            "CPCommon\\Events\\": "events/",
+            "CPCommon\\Pid\\": "pid/",
+            "CPCommon\\Jwt\\": "jwt/",
+            "CPCommon\\Log\\": "log/",
+            "CPCommon\\RabbitMQ\\": "rabbitmq/",
+            "CPCommon\\Test\\": "tests/"
+        }
+    }
+}

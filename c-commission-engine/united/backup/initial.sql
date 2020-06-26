@@ -1,0 +1,1 @@
+DELETE FROM ce_migrations WHERE id=2;

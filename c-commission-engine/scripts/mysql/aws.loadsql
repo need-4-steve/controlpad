@@ -1,0 +1,4 @@
+mysql -u root -p'y3.$%^YGgF7jqdF$' -h commision-test.cboulhip7pbm.us-west-2.rds.amazonaws.com commission_engine < new.sql
+mysql -u root -p'y3.$%^YGgF7jqdF$' -h commision-test.cboulhip7pbm.us-west-2.rds.amazonaws.com commission_engine < users.sql
+mysql -u root -p'y3.$%^YGgF7jqdF$' -h commision-test.cboulhip7pbm.us-west-2.rds.amazonaws.com commission_engine < receipts.sql
+

@@ -1,0 +1,34 @@
+DELETE FROM ce_achvbonus;
+DELETE FROM ce_audit_ranks;
+DELETE FROM ce_audit_generations;
+DELETE FROM ce_audit_users;
+DELETE FROM ce_basic_commrules;
+DELETE FROM ce_batches;
+DELETE FROM ce_bonus;
+DELETE FROM ce_breakdown;
+DELETE FROM ce_breakdown_gen;
+DELETE FROM ce_breakdown_orders;
+DELETE FROM ce_breakdown_users;
+DELETE FROM ce_commissions;
+DELETE FROM ce_commrules;
+DELETE FROM ce_grandtotals;
+DELETE FROM ce_ledger;
+DELETE FROM ce_rankgenbonus;
+DELETE FROM ce_rankrules;
+DELETE FROM ce_ranks;
+DELETE FROM ce_systems;
+DELETE FROM ce_signupbonus;
+DELETE FROM ce_userstats_month;
+DELETE FROM ce_userstats_month_legs;
+DELETE FROM ce_userstats_month_lvl1;
+DELETE FROM ce_userstats_month_lvl1_rank;
+DELETE FROM ce_userstats_total;
+DELETE FROM ce_userstats_total_legs;
+DELETE FROM ce_userstats_total_lvl1;
+
+DELETE FROM ce_systemusers WHERE id!=1;
+ALTER SEQUENCE ce_systemusers_id_seq RESTART WITH 2;
+ALTER SEQUENCE ce_systems_id_seq RESTART WITH 1;
+
+UPDATE ce_users SET firstname='John', lastname='Smith', cell='5555555555', email='test@controlpad.com', address='123 Mockingbird Ln', city='Nowhere', zip='555555';
+UPDATE ce_systemusers SET firstname='Demo', lastname='Demo';

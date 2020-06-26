@@ -1,0 +1,13 @@
+// The inc.settings.php file is for the front end of the commission engine.
+// It allows quick lookup to see what commission engine api the front end is pointed to.
+// Add incoming web server information to inc.settings.php to handle the different 
+// commission engines installed
+
+// The *.ini files are config files that are used on commissione engine start up.
+// This way multiple instances of the commission engine can be run on a single server
+
+// passwd postgres
+// login postgres
+// createuser -s root
+// createuser -s ubuntu
+ALTER USER root WITH PASSWORD 'SomePassword';

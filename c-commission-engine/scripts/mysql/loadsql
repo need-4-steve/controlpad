@@ -1,0 +1,3 @@
+mysql -u root -p53eqRpYtQPP94apf ce < users.sql
+mysql -u root -p53eqRpYtQPP94apf ce < receipts.sql
+

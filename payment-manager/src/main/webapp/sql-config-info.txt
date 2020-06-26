@@ -1,0 +1,7 @@
+Create file 'sql-config.json' in /etc/opt/payman/ and use the following format.
+
+{
+  "url":"jdbc:mysql://localhost/database_name",
+  "username":"user",
+  "password":"password"
+}

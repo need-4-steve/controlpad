@@ -1,0 +1,257 @@
+<template>
+  <div :name="mergedOption.transition">
+    <div
+      :id="mergedOption.id"
+      class="et-wrapper"
+      :class="clazz"
+      :transition="mergedOption.transition"
+      v-show="showing">
+      <div v-if="mergedOption.error">
+        <span class="lnr lnr-cross-circle toast-error"></span>
+        <span class="et-content" v-html="mergedOption.message"></span>
+        <button  v-if="mergedOption.dismiss" class="toast-button-dismiss" @click="dismiss()">Dismiss</button>
+      </div>
+      <div v-else>
+        <span class="lnr lnr-checkmark-circle toast-success"></span>
+        <span class="et-content" v-html="mergedOption.message"></span>
+        <button v-if="mergedOption.dismiss" class="toast-button-dismiss" @click="dismiss()">Dismiss</button>
+      </div>
+    </div>
+  </div>
+</template>
+<style lang="scss">
+  @import "resources/assets/sass/var.scss";
+  .toast-button-dismiss {
+    background-color: rgba(88, 88, 88, 0.7);
+    border: 0;
+    border-radius: 2px;
+    color: tomato;
+    float: right;
+    font-size: 12px;
+    margin-left: 10px;
+    transition: all 0.5s ease;
+  }
+  .toast-button-dismiss:hover {
+    background-color: #777;
+  }
+  .toast-success {
+    padding: 3px;
+    font-size: 15px;
+    margin-right: 5px;
+    float: left;
+    color: #5cb85c;
+  }
+  .toast-error {
+    padding: 3px;
+    font-size: 15px;
+    margin-right: 5px;
+    float: left;
+    color: tomato;
+  }
+  .et-wrapper {
+    background-color: rgba(48, 45, 55, 0.9);
+    box-shadow: 1px 1px 3px #444;
+    border-radius: 2px;
+    padding: 10px;
+    display: inline-block;
+    width: 600px;
+    min-width: 160px;
+    max-width: 85%;
+    color: white;
+    margin: auto;
+    z-index: 99999999;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  @media (max-width: 620px) {
+    .et-wrapper {
+      width: 90%;
+    }
+  }
+  .et-wrapper {
+    position: fixed;
+    top: 80%;
+  }
+  .et-content {
+    text-align: center;
+  }
+  .et-wrapper.et-left {
+      right: auto;
+      left: 0;
+  }
+  .et-wrapper.et-right {
+      left: auto;
+      right: 0;
+  }
+  .et-wrapper.et-center {
+      left: 50%;
+      transform: translateX(-50%);
+  }
+  .et-wrapper.et-top {
+      top: 0;
+      bottom: auto;
+  }
+  .et-wrapper.et-bottom {
+      top: auto;
+      bottom: 0;
+  }
+  .et-wrapper.et-alert {
+    background-color: rgba(189, 19, 19, 0.7);
+  }
+  .et-wrapper.et-warn {
+    background-color: rgba(250, 180 ,90 ,0.9);
+  }
+  .et-wrapper.et-info {
+    background-color: rgba(32, 83, 201, 0.7);
+  }
+  .fade-enter-active,
+  .fade-leave-active,
+  .fade-transition {
+    -webkit-transition: opacity .3s ease;
+    transition: opacity .3s ease;
+  }
+  .fade-enter,
+  .fade-leave,
+  .fade-leave-active {
+    opacity: 0;
+  }
+  .slide-down-enter-active,
+  .slide-down-leave-active,
+  .slide-down-transition {
+    -webkit-transition: opacity .3s ease, top .3s ease-in;
+    transition: opacity .3s ease, top .3s ease-in;
+  }
+  .slide-down-leave-active,
+  .slide-down-enter,
+  .slide-down-leave {
+    opacity: 0;
+    top: -10%;
+  }
+  .slide-up-enter-active,
+  .slide-up-leave-active,
+  .slide-up-transition {
+    -webkit-transition: opacity .3s ease, top .3s ease-in;
+    transition: opacity .3s ease, top .3s ease-in;
+  }
+  .slide-up-leave-active,
+  .slide-up-enter,
+  .slide-up-leave {
+    opacity: 0;
+    top: 110%;
+  }
+  .slide-left-enter-active,
+  .slide-left-leave-active,
+  .slide-left-transition {
+    -webkit-transition: opacity .3s ease, left .3s ease-in;
+    transition: opacity .3s ease, left .3s ease-in;
+  }
+  .slide-left-leave-active,
+  .slide-left-enter,
+  .slide-left-leave {
+    opacity: 0;
+    left: 110%;
+  }
+  .slide-right-enter-active,
+  .slide-right-leave-active,
+  .slide-right-transition {
+    -webkit-transition: opacity .3s ease, left .3s ease;
+    transition: opacity .3s ease, left .3s ease;
+  }
+  .slide-right-leave-active,
+  .slide-right-enter,
+  .slide-right-leave {
+    opacity: 0;
+    left: -1000px;
+  }
+</style>
+<script>
+  const DEFAULT_OPT = {
+    id: 'easy-toast-default',
+    className: '',
+    horizontalPosition: 'center',
+    verticalPosition: 'bottom',
+    parent: 'body',
+    transition: 'fade',
+    duration: 5000,
+    message: '',
+    dismiss: true,
+    error: false
+  }
+  module.exports = {
+    data () {
+      return {
+        queue: [],
+        option: {},
+        showing: false
+      }
+    },
+    ready () {
+      if (this.mergedOption.dismiss && this.queue.length > 1) {
+        this.queue.unshift()
+        console.log('THE QUE', this.queue)
+      }
+    },
+    computed: {
+      mergedOption: function () {
+        return Object.assign({}, DEFAULT_OPT, this.option)
+      },
+      clazz: function () {
+        let clazz = []
+        let className = this.option.className
+        let horizontalPosition = this.mergedOption.horizontalPosition
+        let verticalPosition = this.mergedOption.verticalPosition
+
+        if (className) {
+          if (typeof className === 'string') {
+            clazz.push(className)
+          }
+
+          if (Array.isArray(className)) {
+            clazz = clazz.concat(className)
+          }
+        }
+
+        if (horizontalPosition) {
+          clazz.push(`et-${horizontalPosition}`)
+        }
+
+        if (verticalPosition) {
+          clazz.push(`et-${verticalPosition}`)
+        }
+
+        return clazz.join(' ')
+      }
+    },
+    methods: {
+      dismiss () {
+        this.showing = false
+      }
+    },
+    watch: {
+      queue: function () {
+        if (this.mergedOption.dismiss && this.queue.length > 1) {
+          this.queue.shift()
+        }
+        let pending = this.queue.length
+        if (pending === 0) {
+          return
+        }
+        let $this = this
+        this.showing = true
+        this.option = this.queue[0]
+        if ((!this.option.mode || this.option.mode === 'override') && pending > 1) {
+          clearTimeout(this.timeoutId)
+          this.showing = false
+          this.timeoutId = null
+          this.timeoutId = setTimeout(() => $this.queue.shift())
+        } else {
+          this.timeoutId = setTimeout(function () {
+            $this.showing = false
+            $this.timeoutId = null
+            setTimeout(() => $this.queue.shift())
+          }, $this.mergedOption.duration * pending)
+        }
+      }
+    }
+  }
+</script>

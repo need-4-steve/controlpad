@@ -1,0 +1,1 @@
+UPDATE ce_receipts SET wholesale_price=wholesale_price*0.6, retail_price=retail_price*0.6 WHERE inv_type='5' and wholesale_date >= '2017-8-1' and wholesale_price < 0;
